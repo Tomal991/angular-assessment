@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "../node_modules/@angular/material/prebuilt-themes/indigo-pink.css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+    background-color: rgb(228, 223, 223);
+}
+.btn{
+    @apply bg-purple-800 text-white rounded p-2
+}
+input{
+    @apply border-2 border-black rounded
+}
+input.ng-invalid.ng-touched {
+    border: red 2px solid;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
