@@ -8,13 +8,12 @@ import { ModalComponent } from './modal/modal.component';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatPaginatorModule} from '@angular/material/paginator';
-import { EditModalComponent } from './edit-modal/edit-modal.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ModalComponent,
-    EditModalComponent
   ],
   imports: [
     BrowserModule,
