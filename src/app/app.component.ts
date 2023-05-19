@@ -21,7 +21,7 @@ export class AppComponent {
   ngOnInit(): void {
     this.appService.getData().subscribe((data) => {
       this.userData = data;
-      this.pageSlice = this.userData.slice(0, 10);
+      this.pageSlice = this.userData.slice(0, 50);
     });
   }
 

@@ -10,10 +10,10 @@ import { first } from 'rxjs';
   styleUrls: ['./modal.component.scss'],
 })
 export class ModalComponent implements OnInit {
-  [x: string]: any;
+  id:string='';
   userForm: FormGroup = null;
-  emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
-  phonePattern="/^(?:(?:\+|00)88|01)?\d{11}$/"
+  // emailPattern = '^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$';
+  // phonePattern="/^(?:(?:\+|00)88|01)?\d{11}$/"
   constructor(
     private formBuilder: FormBuilder,
     private appService: AppService,
@@ -24,10 +24,9 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
     this.id = this.route.snapshot.params['id'];
     this.userForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      phone: ['', Validators.required, Validators.minLength(11)],
-      email: ['', Validators.pattern(this.emailPattern)],
-      password: ['12345'],
+      name: ['', ],
+      // phone: ['', Validators.compose([Validators.required,Validators.minLength(5),Validators.maxLength(11)])],
+      // email: ['', [Validators.required,Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
     });
 
     if (this.id) {
@@ -51,6 +50,7 @@ export class ModalComponent implements OnInit {
         next: () => {
           this.router.navigate(['']);
           this.userForm.reset();
+          this.ngOnInit()
         },
         error: (error) => {
         },
@@ -62,5 +62,15 @@ export class ModalComponent implements OnInit {
     return this.id
       ? this.appService.updateData(this.id!, form.value)
       : this.appService.postData(form.value);
+
+  }
+  get name(){
+    return this.userForm.get('name')
+  }
+  get phone(){
+    return this.userForm.get('phone')
+  }
+   get email(){
+    return this.userForm.get('email')
   }
 }

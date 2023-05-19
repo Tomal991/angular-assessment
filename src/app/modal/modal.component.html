@@ -1,5 +1,5 @@
 <div
-  class="fixed top-10 left-96 bg-blue-200 text-black p-2 rounded shadow-2xl shadow-black/50 min-w-[500px]"
+  class="fixed top-5 left-96 bg-blue-200 text-black p-2 rounded shadow-2xl shadow-black/50 max-w-[500px] max-h-[600px] overflow-y-auto"
 >
   <div class="flex justify-between">
     <h1 class="font-bold text-center">User Form</h1>
@@ -8,25 +8,75 @@
   <form
     (ngSubmit)="onFormSubmit(userForm)"
     [formGroup]="userForm"
-    class="grid grid-cols-1 gap-3 p-2"
+    class="grid grid-cols-1 gap-3 p-2 "
+    
   >
-    Name <br />
-    <input type="text" formControlName="name" />
+    <!-- Name <br />
+    <input type="text" class="form-control" formControlName="name" />
+    <div [class.error]="name.invalid && (name.dirty || name.touched)" *ngIf="name.invalid && (name.dirty || name.touched)">
+      <div *ngIf="name.errors.required">Name is required.</div>
+      <div *ngIf="name.errors.minlength">
+        Name must be at least 3 characters long.
+      </div>
+      <div *ngIf="name.errors.maxlength">
+        Name must be max 6 characters long.
+      </div>
+    </div>
     Phone <br />
-    <input type="number" formControlName="phone" />
-    <!-- <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)"
-    >
-
-  <div *ngIf="phone?.errors?.['required']">
-    Name is required.
-  </div>
-  <div *ngIf="phone?.errors?.['minlength']">
-    Name must be at least 4 characters long.
-  </div>
-</div> -->
+    <input type="phone" formControlName="phone" />
+    <div *ngIf="phone?.invalid && (phone?.dirty || phone?.touched)">
+      <div *ngIf="phone?.errors?.required">
+        phone is required. 
+      </div>
+      <div *ngIf="phone.errors.minlength">
+        phone must be at least 4 characters long.
+        {{ phone.errors.minlength | json }}
+      </div>
+      <div *ngIf="phone.errors.maxlength">
+        phone must be at max 11 characters long.
+        {{ phone.errors.maxlength | json }}
+      </div>
+    </div>
     Email <br />
-    <input type="text" formControlName="email" />
-
-    <button class="btn">{{ id ? "Update" : "Submit" }}</button>
+    <input type="email" formControlName="email" />
+    <div *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+      <div *ngIf="email?.errors?.required">
+        email is required. 
+      </div>
+      <div *ngIf="email.errors.minlength">
+        email must be at least 4 characters long.
+        {{ email.errors.minlength | json }}
+      </div>
+      <div *ngIf="email.errors.maxlength">
+        email must be at max 11 characters long.
+        {{ email.errors.maxlength | json }}
+      </div>
+      <div *ngIf="email.errors.pattern">
+        email is not matching pattern.
+        {{ email.errors.pattern | json }}
+      </div>
+      <div *ngIf="email.errors.email">
+        email is not valid.
+        {{ email.errors.email | json }}
+      </div>
+    </div> -->
+    <app-image-upload></app-image-upload>
+    <button class="butn">{{ id ? "Update" : "Submit" }}</button>
   </form>
 </div>
+
+
+<!-- //important -->
+<!-- <input type="phone" formControlName="phone" /> -->
+<!-- <div *ngIf="phone?.errors?.required">
+  phone is required. 
+</div>
+<div *ngIf="userForm.controls['phone'].hasError('minlength')">
+  phone must be at least 4 characters long.
+  {{ phone.errors.minlength | json }}
+</div>
+<div *ngIf="userForm.controls['phone'].hasError('maxlength')">
+  phone must be at max 11 characters long.
+  {{ phone.errors.maxlength | json }}
+</div>
+</div> -->

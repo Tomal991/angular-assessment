@@ -1,4 +1,4 @@
-<a routerLink="add" class="btn bg-purple-600">Add User</a>
+<a routerLink="add" class="butn bg-purple-600">Add User</a>
 <table class="w-full mt-4">
   <tr>
     <th>Name</th>
@@ -11,7 +11,7 @@
     <td>{{user.name}}</td>
     <td>{{user.phone}}</td>
     <td>{{user.email}}</td>
-    <td><a href="" routerLink="edit/{{user.id}}" class="btn !bg-blue-600">Edit</a>
+    <td><a href="" routerLink="edit/{{user.id}}" class="butn !bg-blue-600">Edit</a>
     
       <button (click)="deleteUser(user.id)" class="btn !bg-red-600 ml-4">delete</button>
     </td>
